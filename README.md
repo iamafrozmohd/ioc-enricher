@@ -88,7 +88,7 @@ samples/         safe sample indicators
 ```
 
 ## CI pipeline
-Every push runs: unit tests on Python 3.9, 3.11 and 3.13 · `ruff` lint · `bandit` security scan · a check for hard-coded API keys.
+Every push runs: unit tests on Python 3.10, 3.12 and 3.13 · `ruff` lint · `bandit` security scan · a check for hard-coded API keys.
 
 Run the tests locally:
 ```bash
