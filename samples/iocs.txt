@@ -1,0 +1,14 @@
+# Sample indicators for testing ioc-enricher.
+# Safe to look up: public DNS resolvers, a reserved test domain, and the EICAR antivirus test file hash.
+
+# IPs
+8.8.8.8
+1.1.1.1
+192.168.1.10          # private: skipped by default
+
+# Domains and URLs (defanged forms work too)
+example.com
+hxxps://example[.]com/login
+
+# File hash: SHA-256 of the harmless EICAR antivirus test file (flagged by most AV engines on purpose)
+275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f
