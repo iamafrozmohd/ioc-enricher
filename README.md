@@ -46,15 +46,15 @@ python -m ioc_enricher -f iocs.txt --no-abuseipdb
 Run `python -m ioc_enricher -h` for all options.
 
 ## Example output
-Running against [`samples/iocs.txt`](samples/iocs.txt) (illustrative values; live results change over time):
+A real run against [`samples/iocs.txt`](samples/iocs.txt) on Oct 23, 2026 (live results change over time):
 ```text
 Verdict    Type         Indicator                                                         VT     Abuse%  Country
 ---------  -----------  ----------------------------------------------------------------  -----  ------  -------
-MALICIOUS  hash/sha256  275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f  62/72  -       -
-UNKNOWN    url          https://example.com/login                                         -      -       -
-CLEAN      ip/v4        8.8.8.8                                                           0/94   0       US
-CLEAN      ip/v4        1.1.1.1                                                           0/94   0       US
-CLEAN      domain       example.com                                                       0/94   -       -
+MALICIOUS  hash/sha256  275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f  66/68  -       -
+CLEAN      ip/v4        8.8.8.8                                                           0/92   0       US
+CLEAN      ip/v4        1.1.1.1                                                           0/92   0       AU
+CLEAN      domain       example.com                                                       0/92   -       -
+CLEAN      url          https://example.com/login                                         0/93   -       -
 SKIPPED    ip/v4        192.168.1.10                                                      -      -       -
 ```
 The SHA-256 is the [EICAR test file](https://www.eicar.org/download-anti-malware-testfile/), a harmless string that antivirus engines flag on purpose, so it's a safe way to see a MALICIOUS result.
