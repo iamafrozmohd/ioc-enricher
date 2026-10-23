@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Unit tests
+        run: python -m unittest discover -s tests -t . -v
+
+  lint-and-security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install tools
+        run: pip install ruff bandit
+      - name: Lint (ruff)
+        run: ruff check .
+      - name: Security scan (bandit)
+        run: bandit -r ioc_enricher -ll
+      - name: Secret scan (no hard-coded API keys)
+        run: |
+          if grep -rEn "(x-apikey|Key)\"?\s*[:=]\s*\"[A-Za-z0-9]{32,}\"" --include=*.py .; then
+            echo "Possible hard-coded API key found" && exit 1
+          fi
