@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ioc-enricher"
+version = "1.0.0"
+description = "Enrich IPs, domains, URLs and file hashes with VirusTotal and AbuseIPDB threat intelligence."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Afroz Mohammed" }]
+dependencies = []
+
+[project.scripts]
+ioc-enricher = "ioc_enricher.cli:main"
+
+[tool.setuptools]
+packages = ["ioc_enricher"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py39"
