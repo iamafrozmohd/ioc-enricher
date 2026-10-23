@@ -1,6 +1,6 @@
 """Threat intelligence provider clients (VirusTotal v3 and AbuseIPDB v2).
 
-Only the Python standard library is used, so the tool runs anywhere with Python 3.9+.
+Only the Python standard library is used, so the tool runs anywhere with Python 3.10+.
 """
 
 from __future__ import annotations
